@@ -34,7 +34,7 @@ class ReservationModelAdmin(admin.ModelAdmin):
     list_display = ['reservation_date', 'checkin_date', 'checkout_date', 'room', 'client']
     list_display_links = ['reservation_date']
     list_filter = ['reservation_date', 'room', 'client']
-    search_fields = ['reservation_date', 'checkin_date', 'checkout_date', 'room', 'client']
+    search_fields = ['reservation_date', 'checkin_date', 'checkout_date', 'room__room_number', 'client__first_name', 'client__last_name']
     class Meta:
         model = Reservation
 
@@ -44,7 +44,7 @@ admin.site.register(Reservation, ReservationModelAdmin)
 class BillModelAdmin(admin.ModelAdmin):
     list_display = ['reservation', 'total_price']
     list_display_links = ['reservation', 'total_price']
-    search_fields = ['reservation']
+    search_fields = ['reservation__id']
     class Meta:
         model = Bill
 
