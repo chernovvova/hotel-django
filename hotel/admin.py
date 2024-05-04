@@ -19,7 +19,7 @@ admin.site.register(Client, ClientModelAdmin)
 
 
 class RoomModelAdmin(admin.ModelAdmin):
-    list_display = ['room_number', 'type', 'category', 'cost_per_day']
+    list_display = ['name', 'room_number', 'type', 'category', 'cost_per_day', 'description']
     list_display_links = ['room_number']
     list_filter = ['type', 'category', 'cost_per_day']
     search_fields = ['room_number', 'type', 'category', 'cost_per_day']

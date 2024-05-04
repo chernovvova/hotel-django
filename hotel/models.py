@@ -30,6 +30,8 @@ class Room(models.Model):
                 ("deluxe", "Номер «люкс»"))
     category = models.CharField(max_length=50, choices=category, verbose_name='Категория номера')
     cost_per_day = models.IntegerField(verbose_name='Стоимость за день')
+    description = models.TextField(default="", verbose_name='Описание номера')
+    name = models.CharField(max_length=200, default="", verbose_name='Название номера')
 
     def __unicode__(self):
         return str(self.room_number)
