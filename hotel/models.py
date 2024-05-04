@@ -19,8 +19,16 @@ class Client(models.Model):
 
 class Room(models.Model):
     room_number = models.IntegerField(verbose_name='Нормер комнаты')
-    type = models.CharField(max_length=50, verbose_name='Тип номера')
-    category = models.CharField(max_length=50, verbose_name='Категория номера')
+    type = (("single", "Номер с односпальной кроватью"),
+            ("double","Номер с двуспальной кроватью"),
+            ("twin", "Номер с двумя кроватями"),
+            ("triple", "Номер с тремя кроватями"),
+            ("family", "Семейный номер"))
+    type = models.CharField(max_length=50, choices=type, verbose_name='Тип номера')
+    category = (("standard", "Стандартный номер"),
+                ("superior", "Номер повышенного комфорта"),
+                ("deluxe", "Номер «люкс»"))
+    category = models.CharField(max_length=50, choices=category, verbose_name='Категория номера')
     cost_per_day = models.IntegerField(verbose_name='Стоимость за день')
 
     def __unicode__(self):
