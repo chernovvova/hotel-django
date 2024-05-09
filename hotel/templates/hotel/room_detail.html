@@ -6,6 +6,11 @@
     <title>{{instance.room_number}}</title>
 </head>
 <body>
+    <ul>
+        <li><a href="/hotel/">Главная</a></li>
+        <li><a href="/hotel/create/">Добавить комнату</a></li>
+        <li><a href="/hotel/reservation/">Добавить бронь</a></li>
+      </ul>
     <h1> {{instance.name}} </h1>
     <div>
         <p> {{instance.description}}</p>
@@ -14,5 +19,11 @@
         <p>Категория: {{instance.category}}</p>
         <p>Стоимость за день: {{instance.cost_per_day}}</p>
     </div>
+    <form action="" method="post">
+        {% csrf_token %}
+        <a href="{{ instance.get_absolute_url }}update">
+            Update
+        </a>
+    </form>
 </body>
 </html>

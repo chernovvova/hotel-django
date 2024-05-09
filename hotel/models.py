@@ -1,5 +1,6 @@
 from django.db import models
 
+from django.urls import reverse
 # Create your models here.
 
 class Client(models.Model):
@@ -18,6 +19,8 @@ class Client(models.Model):
         verbose_name_plural = 'Клиенты'
 
 class Room(models.Model):
+    name = models.CharField(max_length=200, default="", verbose_name='Название номера')
+    description = models.TextField(default="", verbose_name='Описание номера')
     room_number = models.IntegerField(verbose_name='Нормер комнаты')
     type = (("single", "Номер с односпальной кроватью"),
             ("double","Номер с двуспальной кроватью"),
@@ -30,14 +33,15 @@ class Room(models.Model):
                 ("deluxe", "Номер «люкс»"))
     category = models.CharField(max_length=50, choices=category, verbose_name='Категория номера')
     cost_per_day = models.IntegerField(verbose_name='Стоимость за день')
-    description = models.TextField(default="", verbose_name='Описание номера')
-    name = models.CharField(max_length=200, default="", verbose_name='Название номера')
 
     def __unicode__(self):
         return str(self.room_number)
     
     def __str__(self):
         return str(self.room_number)
+    
+    def get_absolute_url(self):
+        return reverse('hotel:detail', kwargs={'id': self.id})
     
     class Meta:
         verbose_name = 'Комната'

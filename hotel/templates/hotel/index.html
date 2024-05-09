@@ -6,10 +6,17 @@
     <title>{{title}}</title>
 </head>
 <body>
+    <nav>
+        <ul>
+            <li><a href="/hotel/">Главная</a></li>
+            <li><a href="/hotel/create/">Добавить комнату</a></li>
+            <li><a href="/hotel/reservation/">Добавить бронь</a></li>
+          </ul>
+    </nav>
     <h1>{{title}}</h1>
     {% for i in queryset %}
         <div>
-            <a href="/hotel/detail/{{i.id}}"> <h2> {{i.name}} </h2> </a>
+            <a href=" {{ i.get_absolute_url }}"> <h2> {{i.name}} </h2> </a>
             <p> {{i.description}} </p>
         </div>
     {% endfor %}

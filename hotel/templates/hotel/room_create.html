@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+</head>
+<body>
+    <ul>
+        <li><a href="/hotel/">Главная</a></li>
+        <li><a href="/hotel/create/">Добавить комнату</a></li>
+        <li><a href="/hotel/reservation/">Добавить бронь</a></li>
+      </ul>
+    <h1>{{title}}</h1>
+    <body>
+        <form action="" method="post">
+            {% csrf_token %}
+            {{form.as_p}}
+            <button type="submit">Create Room</button>
+        </form>
+    </body>
+</body>
+</html>
